@@ -36,40 +36,43 @@ const News = () => {
     <Layout>
       <PageTransition>
         {/* Header */}
-        <section className="bg-secondary py-12 md:py-16">
-          <div className="container-editorial">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        <section className="bg-paper border-b-[3px] border-headline">
+          <div className="container-editorial py-10 sm:py-12 md:py-16 text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
+              transition={{ duration: 0.4 }}
+              className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold text-headline mb-3"
             >
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-headline mb-4">
-                News & Articles
-              </h1>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore the latest stories, events, and updates from Atakent Anatolian High School
-              </p>
-            </motion.div>
+              News & Articles
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-muted-foreground font-body text-sm sm:text-base max-w-lg mx-auto"
+            >
+              Stories and updates from Atakent Anatolian High School
+            </motion.p>
           </div>
         </section>
 
-        {/* Category Filter */}
-        <section className="container-editorial py-8">
+        {/* Filters */}
+        <section className="container-editorial py-6 sm:py-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-wrap justify-center gap-3"
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="flex flex-wrap justify-center gap-2 sm:gap-3"
           >
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryChange(category.id)}
-                className={`px-5 py-2 text-sm font-medium uppercase tracking-wider rounded-sm transition-all duration-300 ${
+                className={`px-4 py-2 text-xs font-body font-semibold uppercase tracking-wider transition-all duration-200 ${
                   currentCategory === category.id
                     ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-foreground hover:bg-primary/10"
+                    : "bg-secondary text-secondary-foreground hover:bg-primary/10"
                 }`}
               >
                 {category.label}
@@ -79,9 +82,9 @@ const News = () => {
         </section>
 
         {/* Articles Grid */}
-        <section className="container-editorial pb-16">
+        <section className="container-editorial pb-12 sm:pb-16">
           {filteredArticles.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {filteredArticles.map((article, index) => (
                 <ArticleCard key={article.id} article={article} index={index} />
               ))}
@@ -90,14 +93,14 @@ const News = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-16"
+              className="text-center py-12"
             >
-              <p className="text-muted-foreground text-lg">
+              <p className="text-muted-foreground font-body">
                 No articles found in this category.
               </p>
               <Link
                 to="/news"
-                className="inline-block mt-4 text-primary hover:underline"
+                className="inline-block mt-3 text-primary text-sm font-body hover:underline"
               >
                 View all articles
               </Link>
