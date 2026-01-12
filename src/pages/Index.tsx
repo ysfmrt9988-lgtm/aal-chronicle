@@ -11,7 +11,7 @@ const Index = () => {
         <HeroSection />
         <FeaturedSection />
         <div className="container-editorial">
-          <div className="divider-double my-8" />
+          <div className="divider-double" />
         </div>
         <LatestSection />
       </PageTransition>
